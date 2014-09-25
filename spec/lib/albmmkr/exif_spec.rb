@@ -11,4 +11,14 @@ describe Albmmkr::Exif do
   it "can read create time" do
     expect(subject.createdate).to be_a Time
   end
+
+  it "doesn't die with nil" do
+    expect {
+      Albmmkr::Exif.new("asdfasdf")
+    }.to_not raise_error
+  end
+
+  it "returns nil when tool is nil" do
+    expect(Albmmkr::Exif.new("asdfasdf").photo).to be_nil
+  end
 end

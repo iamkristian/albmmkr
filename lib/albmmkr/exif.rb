@@ -15,6 +15,8 @@ module Albmmkr
 
     def tool(filename)
       MiniExiftool.new filename
+    rescue MiniExiftool::Error
+      nil
     end
   end
 end

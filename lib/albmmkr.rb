@@ -27,13 +27,18 @@ module Albmmkr
     timestamps = []
     pbar = ProgressBar.new("Timestamps", files.size)
     files.each do |file|
-      exif = Albmmkr::Exif.new(file)
-      date = exif.createdate || exif.filemodifydate || File::Stat.new(file).ctime
-      timestamps << [file, date]
+      timestamps << [file, file_creation_time(file)]
       pbar.inc
     end
     pbar.finish
     timestamps
+  end
+
+  def file_creation_time(file)
+    exif = Albmmkr::Exif.new(file)
+    return File::Stat.new(file).ctime unless exif.photo
+
+    exif.createdate || exif.filemodifydate || File::Stat.new(file).ctime
   end
 
   def group_by(files_with_timestamp, sym)
