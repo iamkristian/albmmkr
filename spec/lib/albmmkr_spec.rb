@@ -91,4 +91,15 @@ describe Albmmkr do
       expect(Albmmkr.make_key(time, :hour)).to eq time.strftime("%Y-%m-%d %H:00")
     end
   end
+
+  context "#confirm" do
+    it "asks for confirmation yes" do
+      allow($stdin).to receive(:gets) { 'yes' }
+      expect(Albmmkr.confirm(%w(monday tuesday blabla foobar))).to be_truthy
+    end
+    it "asks for confirmation no" do
+      allow($stdin).to receive(:gets) { 'no' }
+      expect(Albmmkr.confirm(%w(monday tuesday blabla foobar))).to be_falsy
+    end
+  end
 end

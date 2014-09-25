@@ -25,4 +25,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "pry", "~> 0.10"
   spec.add_runtime_dependency "mini_exiftool", "~> 2.4"
   spec.add_runtime_dependency "progressbar", "~> 0.21"
+  spec.add_runtime_dependency "columnize", "~> 0.8"
 end

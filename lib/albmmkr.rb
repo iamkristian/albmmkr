@@ -1,18 +1,24 @@
 require "albmmkr/version"
 require "albmmkr/exif"
 require "progressbar"
+require "columnize"
+require "fileutils"
 
 module Albmmkr
   extend self
 
-  def index(path, group)
+  def index(path, group, destination)
     files = find_files(path)
     files_with_timestamp = timestamps_for_files(files)
     grouped_files = group_by(files_with_timestamp, group)
+
+    make_albums(grouped_files, destination) if confirm(grouped_files)
   end
+
   # finds files in a path using the '*' glob
   def find_files(path)
-    Dir[path + '/*']
+    entries = Dir[path + '/*']
+    entries.select! { |entry| File.file?(entry) }
   end
 
   def timestamps_for_files(files)
@@ -38,6 +44,31 @@ module Albmmkr
     end
     pbar.finish
     grouped_files
+  end
+
+  def confirm(grouped_files)
+    puts """Here are the albums the image sort came up with:
+
+#{grouped_files.columnize displaywidth: 30, colsep: '  |  ', ljust: false }
+
+Do you want me to move your files into that structure?
+"""
+    choice = nil
+    while choice != 'yes' && choice != 'no'
+      puts "Yes/No > "
+      choice = $stdin.gets.chomp
+    end
+    choice == 'yes'
+  end
+
+  def make_albums(grouped_files, destination)
+    pbar = ProgressBar.new("Moving files into albums", grouped_files.keys.size)
+    grouped_files.each do |album, files|
+      dir = FileUtils.mkdir_p("#{destination}/#{album}")
+      files.each { |file| FileUtils.mv file, dir.first }
+      pbar.inc
+    end
+    pbar.finish
   end
 
   def make_key(time, sym)
