@@ -51,7 +51,7 @@ module Albmmkr
   def confirm(grouped_files)
     puts """Here are the albums the image sort came up with:
 
-#{grouped_files.columnize displaywidth: 30, colsep: '  |  ', ljust: false }
+#{grouped_files.columnize(colsep: '  |  ', ljust: false) }
 
 Do you want me to move your files into that structure?
 """
