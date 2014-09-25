@@ -17,8 +17,10 @@ module Albmmkr
 
   # finds files in a path using the '*' glob
   def find_files(path)
-    entries = Dir[path + '/*']
+    entries = Dir[path + "/*"]
+    puts entries.size
     entries.select! { |entry| File.file?(entry) }
+    entries
   end
 
   def timestamps_for_files(files)
