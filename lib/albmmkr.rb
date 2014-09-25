@@ -12,7 +12,7 @@ module Albmmkr
     files_with_timestamp = timestamps_for_files(files)
     grouped_files = group_by(files_with_timestamp, group)
 
-    make_albums(grouped_files, destination) if confirm(grouped_files)
+    make_albums(grouped_files, destination) if confirm(grouped_files.keys)
   end
 
   # finds files in a path using the '*' glob
