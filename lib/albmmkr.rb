@@ -19,8 +19,9 @@ module Albmmkr
     timestamps = []
     pbar = ProgressBar.new("Timestamps", files.size)
     files.each do |file|
-      createdate = Albmmkr::Exif.new(file).createdate
-      timestamps << [file, createdate]
+      exif = Albmmkr::Exif.new(file)
+      date = exif.createdate || exif.filemodifydate || File::Stat.new(file).ctime
+      timestamps << [file, date]
       pbar.inc
     end
     pbar.finish

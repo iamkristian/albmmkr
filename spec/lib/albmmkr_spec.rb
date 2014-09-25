@@ -8,8 +8,8 @@ describe Albmmkr do
       expect(subject).to be_a Array
     end
 
-    it "finds 4 files" do
-      expect(subject.size).to eq 4
+    it "finds 5 files" do
+      expect(subject.size).to eq 5
     end
 
     it "holds the full path" do
