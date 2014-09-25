@@ -1,7 +1,8 @@
 require 'mini_exiftool'
+require 'forwardable'
 module Albmmkr
   class Exif
-    extend Forwardable
+    extend ::Forwardable
 
     attr_reader :filename, :photo
     def_delegators :@photo, :filemodifydate, :createdate, :title
