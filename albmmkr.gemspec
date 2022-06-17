@@ -20,7 +20,8 @@ Gem::Specification.new do |spec|
   spec.requirements << 'exiftool, v9.69'
   spec.required_ruby_version = '>= 1.9.3'
 
-  spec.add_development_dependency "bundler", "~> 1.17.2"
+  spec.add_dependency "bundler", ">= 2.2.33"
+  spec.add_development_dependency "bundler", ">= 2.2.33"
   spec.add_development_dependency "rake", "~> 10.3"
   spec.add_development_dependency "rspec", "~> 3.1"
   spec.add_development_dependency "pry", "~> 0.10"
