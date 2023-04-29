@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Kristian Rasmussen"]
   spec.email         = ["me@krx.io"]
   spec.summary       = %q{Sorts jpg's into albums}
-  spec.description   = %q{Will sort a directory of jpg files into albums, based on exif and date.}
+  spec.description   = %q{Will sort a directory of media files into albums, based on exif and date.}
   spec.homepage      = "http://github.com/iamkristian/albmmkr"
   spec.license       = "MIT"
 
