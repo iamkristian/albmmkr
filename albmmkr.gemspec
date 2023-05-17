@@ -23,8 +23,9 @@ Gem::Specification.new do |spec|
   spec.add_dependency "bundler", '~> 2.2', '>= 2.2.33'
   spec.add_development_dependency "rake", "~> 12.3.3"
   spec.add_development_dependency "rspec", "~> 3.1"
+  spec.add_development_dependency "byebug", "~> 11.1"
   spec.add_development_dependency "pry", "~> 0.10"
-  spec.add_runtime_dependency "mini_exiftool", "~> 2.4"
+  spec.add_runtime_dependency "mini_exiftool", "~> 2.10.2"
   spec.add_runtime_dependency "progressbar", "~> 0.21"
   spec.add_runtime_dependency "columnize", "~> 0.8"
 end

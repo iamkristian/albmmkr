@@ -53,12 +53,12 @@ describe Albmmkr do
 
     it "groups by year" do
       result = Albmmkr.group_by(sorted_files, :year)
-      expect(result.keys.size).to eq 3
+      expect(result.keys.size).to eq 4
     end
 
     it "groups by month" do
       result = Albmmkr.group_by(sorted_files, :month)
-      expect(result.keys.size).to eq 4
+      expect(result.keys.size).to eq 5
     end
   end
 

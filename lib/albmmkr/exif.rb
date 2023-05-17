@@ -5,11 +5,21 @@ module Albmmkr
     extend ::Forwardable
 
     attr_reader :filename, :photo
-    def_delegators :@photo, :filemodifydate, :createdate, :title
+    def_delegators :@photo, :filemodifydate, :title
     def initialize(filename)
       @filename = filename
       @photo = tool filename
     end
+
+    def creationdate
+      @photo['CreationDate']
+    end
+
+    def createdate
+      @photo['CreateDate']
+    end
+
+
 
     private
 

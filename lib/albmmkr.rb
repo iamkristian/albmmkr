@@ -37,8 +37,7 @@ module Albmmkr
   def file_creation_time(file)
     exif = Albmmkr::Exif.new(file)
     return File::Stat.new(file).ctime unless exif.photo
-
-    exif.createdate || exif.filemodifydate || File::Stat.new(file).ctime
+    exif.creationdate || exif.createdate || exif.filemodifydate || File::Stat.new(file).ctime
   end
 
   def group_by(files_with_timestamp, sym)
